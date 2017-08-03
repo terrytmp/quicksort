@@ -1,0 +1,9 @@
+{
+  "name": "quicksort",
+  "version": "0.0.1",
+  "description": "'quicksort implentation in js'",
+  "main": "index.js",
+  "repository": "git@github.com:terrytmp/quicksort.git",
+  "author": "Terry Tampa <terry.tmp9@gmail.com>",
+  "license": "MIT"
+}
