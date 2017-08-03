@@ -1,40 +1,51 @@
+var n;
+var i;
+var p;
+var A = new Array(n);
+var pivot;
+var lo = 0;
+var hi = 8;
 
+for (var k = 0; k <= 8; k++) {
+  A[k] = Math.floor(Math.random() * 9);
+}
 
-    var n = getRandomArbitrary(5, 20);
-    var arr = new Array(n);
-    var arrLength = n - 1;
-    var pivot;
-    var i = -1;
-    var j = 0;
+console.log(A);
 
-    for (var k = 0; k <= arrLength; k++) {
-      arr[k] =   Math.floor(Math.random() * 100);
+quicksort(A, lo, hi);
+
+function quicksort(A, lo, hi) {
+  if (lo < hi) {
+    p = partition(A, lo, hi);
+    quicksort(A, lo, p-1);
+    quicksort(A, p + 1, hi);
+    return A;
+  }
+  console.log(A);
+}
+
+function partition(A, lo, hi) {
+  pivot = A[hi];
+  i = lo - 1;
+
+  for (var j = lo; j <= hi - 1; j++ ) {
+    if (pivot > A[j] ) {
+      i++;
+      A = swap(A, i, j);
     }
+  }
 
-    console.log(arr);
-
-    pivot = arr[arrLength];
-
-    for (k = 0; k <= arrLength - 1; k++ ) {
-      if (pivot => arr[j]) {
-        arr = swap(arr, i, j);
-        i++;
-      }
-      j++;
-    }
-
-console.log(arr);
-
-    function getRandomArbitrary(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
-    }
-
-    function swap(arr, x, y) {
-      var b = arr[y];
-      arr[y] = arr[x];
-      arr[x] = b;
-      return arr;
-
-    }
+  if (A[hi] < A[i + 1]) {
+    A = swap(A, i+1, hi);
+  }
+  return i + 1;
+  return A;
+}
 
 
+function swap(A, x, y) {
+  var b = A[y];
+  A[y] = A[x];
+  A[x] = b;
+  return A;
+}
